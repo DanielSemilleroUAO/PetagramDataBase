@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <include android:id="@+id/tbFav"
+        layout="@layout/actionbar_secundarias">
+
+    </include>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@+id/tbFav"
+        android:id="@+id/nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margen_principal"
+        android:layout_marginLeft="@dimen/margen_principal"
+        android:layout_marginRight="@dimen/margen_principal"
+        android:layout_marginBottom="@dimen/margen_principal">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nombre_ingresado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tnombre" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email"
+        android:layout_below="@+id/nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margen_principal"
+        android:layout_marginLeft="@dimen/margen_principal"
+        android:layout_marginRight="@dimen/margen_principal"
+        android:layout_marginBottom="@dimen/margen_principal">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_ingresado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/temail" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:textSize="@dimen/texto"
+        android:id="@+id/descripcionT"
+        android:layout_below="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tDescripcion"
+        android:layout_marginTop="@dimen/margen_principal"
+        android:layout_marginLeft="@dimen/margen_principal"
+        android:layout_marginRight="@dimen/margen_principal">
+    </TextView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/descripcion"
+        android:layout_below="@+id/descripcionT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margen_principal"
+        android:layout_marginRight="@dimen/margen_principal"
+        android:layout_marginBottom="@dimen/margen_principal">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/descripcion_ingresado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:textSize="@dimen/texto"
+        android:id="@+id/siguiente"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:text="@string/bsiguiente"
+        android:theme="@style/MiBotonRaise">
+    </Button>
+
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margeRLCardview">16dp</dimen>
+    <dimen name="margeBCardview">10dp</dimen>
+    <dimen name="margen_principal">16dp</dimen>
+    <dimen name="margen_date">30dp</dimen>
+    <dimen name="ttextoP">20dp</dimen>
+    <dimen name="texto">15dp</dimen>
+</resources>
