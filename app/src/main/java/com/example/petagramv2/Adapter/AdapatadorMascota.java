@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petagramv2.MainActivity;
 import com.example.petagramv2.R;
+import com.example.petagramv2.db.ConstructorMascotas;
 import com.example.petagramv2.pojo.Mascota;
 
 import java.util.ArrayList;
@@ -67,6 +68,7 @@ public class AdapatadorMascota extends RecyclerView.Adapter<AdapatadorMascota.Ma
                         mascotas.get(position).setRating(likes);
                         mascotaViewHolder.tvRating.setText(String.valueOf(mascota.getRating()));
                         mascotaViewHolder.imgLike.setImageResource(R.drawable.ic_likes);
+                        //MainActivity.btnFavoritos.setText(String.valueOf(MainActivity.cantidad_favoritos));
 
 
                         boolean favorito_esta = true;
@@ -81,7 +83,12 @@ public class AdapatadorMascota extends RecyclerView.Adapter<AdapatadorMascota.Ma
                         if (favorito_esta) {
                             MainActivity.cantidad_favoritos += 1;
                             MainActivity.btnFavoritos.setText(String.valueOf(MainActivity.cantidad_favoritos));
-                            MainActivity.favoritos.add(new Mascota(mascota.getFoto(), mascota.getNombre(), mascota.getRating()));
+                            ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
+                            constructorMascotas.addRating(mascota);
+                            constructorMascotas.addFavorito(mascota);
+
+                            //MainActivity.favoritos.add(new Mascota(mascota.getFoto(), mascota.getNombre(), mascota.getRating()));
+
                             //Toast.makeText(activity,"Diste like a " + MainActivity.favoritos.get(0).getNombre(),Toast.LENGTH_SHORT).show();
                         }
 

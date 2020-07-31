@@ -15,13 +15,16 @@ import com.example.petagramv2.Adapter.AdapatadorMascota;
 import com.example.petagramv2.MainActivity;
 import com.example.petagramv2.R;
 import com.example.petagramv2.pojo.Mascota;
+import com.example.petagramv2.presentador.IRecyclerViewFragmentPresenter;
+import com.example.petagramv2.presentador.RecyclerViewFragmentPresenter;
 
 import java.util.ArrayList;
 
-public class ReciclerViewFragment extends Fragment {
+public class ReciclerViewFragment extends Fragment implements IRecyclerViewFragment {
+
     private RecyclerView listaMascotas;
     ArrayList<Mascota> mascotas;
-
+    private IRecyclerViewFragmentPresenter presenter;
 
     @Nullable
     @Override
@@ -31,13 +34,10 @@ public class ReciclerViewFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_recyclerview,container,false);
 
         listaMascotas = (RecyclerView) v.findViewById(R.id.rvMascotas);
+        presenter = new RecyclerViewFragmentPresenter(this, getContext(),0);
 
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-        listaMascotas.setLayoutManager(llm);
-        inicalizarMascotas();
-        inicializarAdaptador();
+        //inicalizarMascotas();
+        //inicializarAdaptador();
 
 
         return v;
@@ -57,5 +57,23 @@ public class ReciclerViewFragment extends Fragment {
         mascotas.add(new Mascota(R.drawable.perro4,"Lolo",0));
         mascotas.add(new Mascota(R.drawable.perro5,"Pepe",0));
 
+    }
+
+    @Override
+    public void generarLinearLayout() {
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        listaMascotas.setLayoutManager(llm);
+    }
+
+    @Override
+    public AdapatadorMascota crearAdapatador(ArrayList<Mascota> mascotas) {
+        AdapatadorMascota adaptador = new AdapatadorMascota(mascotas,getActivity(),0);
+        return adaptador;
+    }
+
+    @Override
+    public void inicializarAdaptadorRV(AdapatadorMascota adaptador) {
+        listaMascotas.setAdapter(adaptador);
     }
 }

@@ -4,11 +4,25 @@ public class Mascota {
     private String nombre;
     private int rating;
     private int foto;
+    private int id;
+
 
     public Mascota(int foto, String nombre, int rating) {
         this.foto = foto;
         this.nombre = nombre;
         this.rating = rating;
+    }
+
+    public Mascota() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {

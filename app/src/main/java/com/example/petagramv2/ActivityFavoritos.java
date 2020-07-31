@@ -15,14 +15,18 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.petagramv2.Adapter.AdapatadorMascota;
+import com.example.petagramv2.fragment.IRecyclerViewFragment;
 import com.example.petagramv2.pojo.Mascota;
+import com.example.petagramv2.presentador.IRecyclerViewFragmentPresenter;
+import com.example.petagramv2.presentador.RecyclerViewFragmentPresenter;
 
 import java.util.ArrayList;
 
-public class ActivityFavoritos extends AppCompatActivity {
+public class ActivityFavoritos extends AppCompatActivity implements IRecyclerViewFragment {
 
     private Toolbar toolbar;
     private RecyclerView listaFavoritos;
+    private IRecyclerViewFragmentPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +38,10 @@ public class ActivityFavoritos extends AppCompatActivity {
 
         listaFavoritos = (RecyclerView) findViewById(R.id.rvMascotasFavoritas);
 
-        LinearLayoutManager llm2 = new LinearLayoutManager(this);
-        llm2.setOrientation(LinearLayoutManager.VERTICAL);
+        presenter = new RecyclerViewFragmentPresenter(this, getBaseContext(),1);
 
-        //GridLayoutManager glm = new GridLayoutManager(this,4);
 
-        listaFavoritos.setLayoutManager(llm2);
-        inicializarAdaptador();
-        Toast.makeText(this,MainActivity.favoritos.get(0).getNombre(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,MainActivity.favoritos.get(0).getNombre(),Toast.LENGTH_SHORT).show();
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -80,4 +80,23 @@ public class ActivityFavoritos extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void generarLinearLayout() {
+        LinearLayoutManager llm2 = new LinearLayoutManager(this);
+        llm2.setOrientation(LinearLayoutManager.VERTICAL);
+        //GridLayoutManager glm = new GridLayoutManager(this,4);
+        listaFavoritos.setLayoutManager(llm2);
+    }
+
+
+    public AdapatadorMascota crearAdapatador(ArrayList<Mascota> mascotas) {
+        AdapatadorMascota adaptador = new AdapatadorMascota(mascotas,this,0);
+        return adaptador;
+    }
+
+
+    public void inicializarAdaptadorRV(AdapatadorMascota adaptador) {
+        listaFavoritos.setAdapter(adaptador);
+    }
+
 }
